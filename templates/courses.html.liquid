@@ -1,0 +1,11 @@
+{% include "header" %}
+{% include "course_version_outdated_alert", courses: courses.enrolled %}
+{% include "sub_navigation" %}
+<main class="np-main np-courses np-subpage-container np-max-width">
+  <div class="np-resource-title">
+    {% t shared.course_vocabulary.plural, key: current_school.course_vocabulary %}
+  </div>
+  <div class="np-resource-subtitle">{% t .headline, key: current_school.course_vocabulary %}</div>
+  {% include "courses_index", class: "col-xs-12 col-sm-6 col-lg-4 np-stretch-content" %}
+</main>
+{% include "footer" %}

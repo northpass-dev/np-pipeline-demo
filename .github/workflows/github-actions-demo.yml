@@ -1,0 +1,16 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Northpass-Pipeline-Demo:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash  
+        run: git config --global init.defaultBranch main
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install np-template-uploader
+      - run: npm exec upload-templates ${{ secrets.NORTHPASS_API_KEY }} ${{ github.workspace }}/templates

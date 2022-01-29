@@ -1,0 +1,28 @@
+{% include "header" %}
+{% include "course_version_outdated_alert", courses: courses.enrolled %}
+{% include "sub_navigation" %}
+<main class="np-main np-dashboard np-subpage-container np-max-width">
+  <div class="row np-flex-center">
+    <div class="col-xs-12 col-sm-8">
+      {% if features.learning_paths? %}
+        <div class="np-dashboard-resources-title">
+          {% t shared.learning_paths %}
+        </div>
+        {% include "learning_paths_index", items: learning_paths.enrolled %}
+      {% endif %}
+      <div class="np-dashboard-resources-title">
+        {% t shared.course_vocabulary.plural, key: current_school.course_vocabulary %}
+      </div>
+      {% include "courses_index", class: "col-xs-12 col-sm-6 np-stretch-content" %}
+    </div>
+    {% if features.training_events? %}
+      <div class="np-grid-spacing col-xs-12 col-sm-4">
+        <div class="np-dashboard-resources-title">
+          {% t .upcoming_events %}
+        </div>
+          {% include "training_events_dashboard" %}
+      </div>
+    {% endif %}
+  </div>
+</main>
+{% include "footer" %}
